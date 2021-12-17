@@ -1,0 +1,32 @@
+@page "/studentspage"
+
+<h3>Daftar Siswa</h3>
+<NavLink class="nav-link" href="addstudent">
+                <span class="oi oi-plus" aria-hidden="true"></span> Tambah Mahasiswa
+            </NavLink>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nomor Siswa</th >
+            <th>Nama Depan</th>
+            <th>Nama Belakang</th>
+            <th>Tanggal Masuk</th>
+            <th>Tombol Aksi</th>
+        </tr>
+    </thead>
+    <tbody> 
+        @foreach (var std in Students){
+            <tr>
+                <td>@std.studentID</td>
+                <td>@std.firstName</td>
+                <td>@std.lastName</td>
+                <td>@std.enrollmentDate</td>
+                <td><a href="@($"studentdetail/{std.studentID}")" class="btn btn-info">Detail</a>
+                <a href="" class="btn btn-primary">Enrol</a>
+                <a href="@($"editstudent/{std.studentID}")" class="btn btn-warning">Edit</a>
+                <a href="@($"delete/{std.studentID}")" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
